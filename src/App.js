@@ -1,14 +1,19 @@
-import logo from './logo.svg';
+
 import './App.css';
 import HomePage from './pages/HomePage/HomePage'
+import Hats from './pages/Hats/Hats'
+import { Route,BrowserRouter ,Routes} from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <HomePage/>
-      </header>
-    </div>
+    <BrowserRouter >
+  <Routes>
+      {console.log("caledddd2222")}
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='/hats' element={<Hats/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
