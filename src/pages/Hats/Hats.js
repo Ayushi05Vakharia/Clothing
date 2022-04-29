@@ -1,12 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {WithRouter} from '../../CustomHooks/WithRouter'
+import { Link } from 'react-router-dom'
 
 const Hats = props => {
-    console.log("yeyyyyyyyyyyyyyyyyy")
+    const{HatsData} = props
+    console.log("..................",HatsData)
   return (
     <div>
-       <h1> Hats</h1></div>
+      {/* {HatsData?.map((hats) => 
+      <React.Fragment>
+      <Link to={`${hats.routeName}`}> {hats.title.toUpperCase()} </Link>
+      </React.Fragment>
+      ) } */}
+      <h1>HATS DATA</h1>
+      </div>
+      
   )
 }
 

@@ -7,7 +7,6 @@ const MenuItems = (props) => {
   const {categories,router} = props
   const [state,setstate]=React.useState()
   const navigate = useNavigate()
-  console.log("router",router,categories)
   return (
     <div className='directory-menu'>
     {categories?.map((category) => 
@@ -16,7 +15,7 @@ const MenuItems = (props) => {
         className='background-image'
         style={{backgroundImage:`url(${category.imageUrl})`}}/>
         <div className='content'onClick={() => {
-          console.log("clicked",navigate)
+      
           navigate(`${category.linkUrl}`)}} >
           <div className='title'>{category.title.toUpperCase()}</div>
           <span className='subtitle'>SHOP NOW</span>
