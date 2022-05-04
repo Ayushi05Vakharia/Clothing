@@ -7,15 +7,17 @@ import Womens from '../Womens'
 import Mens from '../Mens'
 import { Link } from 'react-router-dom'
 import '../../css/collection-items.sytles.scss'
+import DisplayCollections from '../DisplayCollections'
 
 const ShopData = props => {
-    const[collections,setCollections]=useState(shop_Data)
+    
     
   return (
-    <div className='p-4'>
+    <div className='p-4 collection-preview'>
         
-<h1>Collections</h1>
-{collections?.map((collectionsData) => 
+
+<DisplayCollections/>
+{/* {collections?.map((collectionsData) => 
 {
 
  switch (collectionsData.title) {
@@ -56,7 +58,7 @@ const ShopData = props => {
       
       }
 }
-)}
+)} */}
 
     </div>
   )

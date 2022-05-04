@@ -1,7 +1,7 @@
 
 import './App.css';
 import HomePage from './pages/HomePage/HomePage'
-import ShopData from './pages/ShopData'
+import DisplayCollections from './pages/DisplayCollections'
 import Hats from './pages/Hats/Hats'
 import Jackets from './pages/Jackets'
 import Sneakers from './pages/Sneakers'
@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter >
   <Routes>
       <Route path='/' element={<HomePage/>}/>
-      <Route path='/shop' element={<ShopData/>}/>
+      <Route path='/shop' element={<DisplayCollections/>}/>
       <Route path='/hats' element={<Hats/>}/>
       <Route path='/jackets' element={<Jackets/>}/>
       <Route path='/sneakers' element={<Sneakers/>}/>
