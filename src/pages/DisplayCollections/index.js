@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { shop_Data } from "../../Constants";
-import Hats from "../Hats/Hats";
+import CollectionItems from "../CollectionItems";
 // import Jackets from '../Jackets'
 // import Sneakers from '../Sneakers'
 // import Womens from '../Womens'
@@ -16,7 +16,7 @@ const DsiplayCollections = (props) => {
       <h1>Collections</h1>
       <div className="collection-preview">
         {collections?.map(({ id, ...collectionsData }) => (
-          <Hats key={id} {...collectionsData} />
+          <CollectionItems key={id} {...collectionsData} />
         ))}
       </div>
     </div>

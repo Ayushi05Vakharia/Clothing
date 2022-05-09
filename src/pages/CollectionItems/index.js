@@ -4,7 +4,7 @@ import { WithRouter } from "../../CustomHooks/WithRouter";
 import { isEmpty } from "lodash";
 import "../../css/collection-items.sytles.scss";
 
-const Hats = ({ title, items }) => {
+const CollectionItems = ({ title, items }) => {
   return (
     <React.Fragment>
       <div className="title">{title}</div>
@@ -26,8 +26,6 @@ const Hats = ({ title, items }) => {
   );
 };
 
-Hats.propTypes = {
-  HatsData: PropTypes.array.isRequired
-};
+CollectionItems.propTypes = {};
 
-export default WithRouter(Hats);
+export default WithRouter(CollectionItems);
