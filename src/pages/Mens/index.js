@@ -1,12 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-const Mens = props => {
-  return (
-    <h1>Mens</h1>
-  )
-}
+const Mens = (props) => {
+  return <h1>Mens</h1>;
+};
 
-Mens.propTypes = {}
+Mens.propTypes = {};
 
-export default Mens
+export default Mens;

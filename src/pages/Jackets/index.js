@@ -1,12 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-const Jackets = props => {
-  return (
-    <h1>Jackets</h1>
-  )
-}
+const Jackets = (props) => {
+  return <h1>Jackets</h1>;
+};
 
-Jackets.propTypes = {}
+Jackets.propTypes = {};
 
-export default Jackets
+export default Jackets;

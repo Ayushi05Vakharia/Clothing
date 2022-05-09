@@ -15,7 +15,6 @@ const DsiplayCollections = (props) => {
     <div>
       <h1>Collections</h1>
       <div className="collection-preview">
-
         {collections?.map(({ id, ...collectionsData }) => (
           <Hats key={id} {...collectionsData} />
         ))}
