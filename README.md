@@ -71,8 +71,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ### Things need to install
 
-=> BootStrap v5 for css
+BootStrap v5 for css
 
-=> Reactstrap for using basic controllers
+Reactstrap for using basic controllers
 
-=> Firebase for authentication
+Firebase for authentication
