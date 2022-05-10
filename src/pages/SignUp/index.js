@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
+import React, { useState } from "react";
+
+import PropTypes from "prop-types";
+import { signInWithGoogle } from "../../firebase/firebase";
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
@@ -46,7 +48,7 @@ const SignUp = (props) => {
               <Button outline color="info">
                 SignIn
               </Button>
-              <Button outline color="info">
+              <Button outline color="info" onClick={signInWithGoogle}>
                 SignIn with Google
               </Button>
             </div>
