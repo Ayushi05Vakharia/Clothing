@@ -1,10 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
 import "../../css/header.styles.scss";
+
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/crown.svg";
+import PropTypes from "prop-types";
+import React from "react";
+import { auth } from "../../firebase/firebase";
 
 const Header = (props) => {
+  const { curentUser } = props;
   return (
     <div className="header">
       <Link to={"/"}>
@@ -17,9 +20,15 @@ const Header = (props) => {
         <Link className="option" to={"/shop"}>
           CONTACTS
         </Link>
-        <Link className="option" to={"/signup"}>
-          SIGN UP
-        </Link>
+        {curentUser ? (
+          <div className="option" onClick={() => auth.signOut()}>
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="option" to={"/signup"}>
+            SIGN UP
+          </Link>
+        )}
       </div>
     </div>
   );

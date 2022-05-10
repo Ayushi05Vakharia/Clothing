@@ -1,14 +1,28 @@
 import "./App.css";
-import HomePage from "./pages/HomePage/HomePage";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import DisplayCollections from "./pages/DisplayCollections";
-import SignUp from "./pages/SignUp";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
 import Header from "./Components/Header";
+import HomePage from "./pages/HomePage/HomePage";
+import SignUp from "./pages/SignUp";
+import { auth } from "./firebase/firebase";
 
 function App() {
+  const [curentUser, setCurentUser] = useState(null);
+  console.log("curentUser ==>> ", curentUser);
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => setCurentUser(user));
+
+    // return function cleanup() {
+    //   unsubscribefromauth = null;
+    // };
+  }, []);
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header curentUser={curentUser} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignUp />} />

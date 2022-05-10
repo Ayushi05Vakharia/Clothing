@@ -45,10 +45,10 @@ const SignUp = (props) => {
               </FormGroup>
             </Form>
             <div className="d-flex justify-content-between">
-              <Button outline color="info">
+              <Button outline color="secondary">
                 SignIn
               </Button>
-              <Button outline color="info" onClick={signInWithGoogle}>
+              <Button outline color="secondary" onClick={signInWithGoogle}>
                 SignIn with Google
               </Button>
             </div>
