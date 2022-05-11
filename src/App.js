@@ -1,19 +1,31 @@
 import "./App.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { auth, createUserProfileDocument } from "./firebase/firebase";
 import { useEffect, useState } from "react";
 
 import DisplayCollections from "./pages/DisplayCollections";
 import Header from "./Components/Header";
 import HomePage from "./pages/HomePage/HomePage";
 import SignUp from "./pages/SignUp";
-import { auth } from "./firebase/firebase";
 
 function App() {
   const [curentUser, setCurentUser] = useState(null);
-  console.log("curentUser ==>> ", curentUser);
+
   useEffect(() => {
-    auth.onAuthStateChanged((user) => setCurentUser(user));
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const docRef = await createUserProfileDocument(user);
+        docRef.onSnapshot((snapData) => {
+          // console.log("snapData", snapData.data());
+          setCurentUser({
+            id: snapData.id,
+            ...snapData.data()
+          });
+        });
+      }
+      setCurentUser(null);
+    });
 
     // return function cleanup() {
     //   unsubscribefromauth = null;

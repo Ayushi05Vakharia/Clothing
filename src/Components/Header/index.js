@@ -2,12 +2,14 @@ import "../../css/header.styles.scss";
 
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/crown.svg";
+import { ReactComponent as ProfileLogo } from "../../images//profile.svg";
 import PropTypes from "prop-types";
 import React from "react";
 import { auth } from "../../firebase/firebase";
 
 const Header = (props) => {
   const { curentUser } = props;
+  console.log(".............", curentUser);
   return (
     <div className="header">
       <Link to={"/"}>
@@ -29,6 +31,7 @@ const Header = (props) => {
             SIGN UP
           </Link>
         )}
+        {curentUser && <div className="text-info fw-bold">{curentUser.displayName}</div>}
       </div>
     </div>
   );
