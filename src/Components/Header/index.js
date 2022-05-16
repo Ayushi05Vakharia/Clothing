@@ -6,6 +6,7 @@ import { ReactComponent as ProfileLogo } from "../../images//profile.svg";
 import PropTypes from "prop-types";
 import React from "react";
 import { auth } from "../../firebase/firebase";
+import { connect } from "react-redux";
 
 const Header = (props) => {
   const { curentUser } = props;
@@ -39,4 +40,7 @@ const Header = (props) => {
 
 Header.propTypes = {};
 
-export default Header;
+const mapStateToProps = (state) => ({
+  curentUser: state.user.current_user
+});
+export default connect(mapStateToProps, null)(Header);
