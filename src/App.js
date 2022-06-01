@@ -13,13 +13,12 @@ import { setCurrentUser } from "./redux/user/user_actions";
 
 function App(props) {
   const { curentUser } = props;
-  console.log("user", curentUser);
+
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         const docRef = await createUserProfileDocument(user);
         docRef.onSnapshot((snapData) => {
-          // console.log("snapData", snapData.data());
           // setCurentUser({
           //   id: snapData.id,
           //   ...snapData.data()
@@ -41,6 +40,11 @@ function App(props) {
         <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/shop" element={<DisplayCollections />} />
+        <Route path="/hats" element={<DisplayCollections />} />
+        <Route path="/jackets" element={<DisplayCollections />} />
+        <Route path="/womens" element={<DisplayCollections />} />
+        <Route path="/mens" element={<DisplayCollections />} />
+        <Route path="/sneakers" element={<DisplayCollections />} />
       </Routes>
     </BrowserRouter>
   );

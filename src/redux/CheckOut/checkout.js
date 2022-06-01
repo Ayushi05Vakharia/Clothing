@@ -2,7 +2,6 @@ const INITIAL_STATE = {
   ischeckoutopen: false
 };
 const checkoutReducer = (state = INITIAL_STATE, action) => {
-  console.log("reached", action);
   switch (action.type) {
     case "SET_ISCHECKOUT_OPEN":
       return {

@@ -22,7 +22,7 @@ const SignUp = (props) => {
     }
     try {
       const user = await auth.createUserWithEmailAndPassword(email, password);
-      console.log("user", user, displayName);
+      // console.log("user", user, displayName);
       await createUserProfileDocument(user, { displayName });
       // setPassword("");
       // setdisplayName("");

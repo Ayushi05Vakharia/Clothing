@@ -8,7 +8,7 @@ import { setIsCheckoutOpen } from "../../redux/CheckOut/checkout_actions";
 
 const CheckOut = (props) => {
   const { ischeckoutopen, setIsCheckoutOpen } = props;
-  console.log("======>>>>>", ischeckoutopen);
+
   return (
     <div>
       <div className="cart-icon" onClick={() => setIsCheckoutOpen(!ischeckoutopen)}>
