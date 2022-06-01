@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Routes } from "react-router-dom";
 import { Provider, connect } from "react-redux";
 import { auth, createUserProfileDocument } from "./firebase/firebase";
 import { useEffect, useState } from "react";
@@ -12,6 +12,8 @@ import SignUp from "./pages/SignUp";
 import { setCurrentUser } from "./redux/user/user_actions";
 
 function App(props) {
+  const { curentUser } = props;
+  console.log("user", curentUser);
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -28,7 +30,7 @@ function App(props) {
           });
         });
       }
-      // setCurentUser(null);
+      props.setCurrentUser(null);
     });
   }, []);
 
@@ -43,6 +45,10 @@ function App(props) {
     </BrowserRouter>
   );
 }
+
+const mapStateToProps = (state) => ({
+  curentUser: state.user.current_user
+});
 const mapDispachToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user))
 });

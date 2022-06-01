@@ -1,16 +1,19 @@
 import "../../css/header.styles.scss";
+import "../../css/shopping-bag.styles.scss";
 
+import React, { useState } from "react";
+
+import CheckOut from "../CheckOut";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/crown.svg";
-import { ReactComponent as ProfileLogo } from "../../images//profile.svg";
 import PropTypes from "prop-types";
-import React from "react";
 import { auth } from "../../firebase/firebase";
 import { connect } from "react-redux";
+import { setCurrentUser } from "../../redux/user/user_actions";
 
 const Header = (props) => {
-  const { curentUser } = props;
-  console.log(".............", curentUser);
+  const { current_user, ischeckoutopen } = props;
+
   return (
     <div className="header">
       <Link to={"/"}>
@@ -23,8 +26,14 @@ const Header = (props) => {
         <Link className="option" to={"/shop"}>
           CONTACTS
         </Link>
-        {curentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+        {current_user ? (
+          <div
+            className="option"
+            onClick={() => {
+              props.setCurrentUser(null);
+              auth.signOut();
+            }}
+          >
             SIGN OUT
           </div>
         ) : (
@@ -32,7 +41,8 @@ const Header = (props) => {
             SIGN UP
           </Link>
         )}
-        {curentUser && <div className="text-info fw-bold">{curentUser.displayName}</div>}
+        {current_user && <div className="text-info fw-bold">{current_user.displayName}</div>}
+        <CheckOut ischeckoutopen={ischeckoutopen} />
       </div>
     </div>
   );
@@ -40,7 +50,11 @@ const Header = (props) => {
 
 Header.propTypes = {};
 
-const mapStateToProps = (state) => ({
-  curentUser: state.user.current_user
+const mapStateToProps = ({ user: { current_user }, checkout: { ischeckoutopen } }) => ({
+  current_user,
+  ischeckoutopen
 });
-export default connect(mapStateToProps, null)(Header);
+const mapDispachToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user))
+});
+export default connect(mapStateToProps, mapDispachToProps)(Header);
