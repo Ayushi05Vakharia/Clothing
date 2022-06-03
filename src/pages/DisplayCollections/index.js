@@ -11,7 +11,7 @@ const DsiplayCollections = (props) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === "/") {
+    if (location.pathname === "/shop") {
       setCollections(shop_Data);
     } else {
       const chooseCategory = location.pathname.replace("/", "").charAt(0).toUpperCase() + location.pathname.slice(2);

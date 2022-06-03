@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { WithRouter } from "../../CustomHooks/WithRouter";
-import { isEmpty } from "lodash";
 import "../../css/collection-items.sytles.scss";
 
-const CollectionItems = ({ title, items }) => {
+import React, { useEffect, useState } from "react";
+
+import { Button } from "reactstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { isEmpty } from "lodash";
+import { setAddItems } from "../../redux/CheckOut/checkout_actions";
+
+// import { setAddItems } from "./";
+
+const CollectionItems = ({ title, items, setAddItems, cartItems }) => {
+  // const { cartItems } = props;
+
   return (
     <React.Fragment>
       <div className="title">{title}</div>
@@ -19,6 +27,15 @@ const CollectionItems = ({ title, items }) => {
                 <span>{hat.name}</span>
                 <span>${hat.price}</span>
               </div>
+              <Button
+                size="lg"
+                color="dark"
+                outline
+                className="custom-button inverted fw-semibold"
+                onClick={() => setAddItems({ ...hat })}
+              >
+                Add To Cart
+              </Button>
             </div>
           ))}
       </div>
@@ -28,4 +45,11 @@ const CollectionItems = ({ title, items }) => {
 
 CollectionItems.propTypes = {};
 
-export default WithRouter(CollectionItems);
+const mapStateToProps = (state) => ({
+  cartItems: state.checkout.cartItems
+});
+const mapDispachToProps = (dispatch) => ({
+  setAddItems: (items) => dispatch(setAddItems(items))
+});
+
+export default connect(mapStateToProps, mapDispachToProps)(CollectionItems);

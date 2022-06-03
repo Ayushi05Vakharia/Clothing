@@ -1,5 +1,8 @@
+import { addItemToCart } from "../../Utilities";
+
 const INITIAL_STATE = {
-  ischeckoutopen: false
+  ischeckoutopen: false,
+  cartItems: []
 };
 const checkoutReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -7,6 +10,11 @@ const checkoutReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         ischeckoutopen: !state.ischeckoutopen
+      };
+    case "Add_Items":
+      return {
+        ...state,
+        cartItems: addItemToCart(state.cartItems, action.payload)
       };
 
     default:
