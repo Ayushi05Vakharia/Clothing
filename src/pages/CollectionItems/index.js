@@ -12,13 +12,15 @@ import { setAddItems } from "../../redux/CheckOut/checkout_actions";
 
 const CollectionItems = ({ title, items, setAddItems, cartItems }) => {
   // const { cartItems } = props;
+  console.log("items", items);
 
   return (
     <React.Fragment>
-      <div className="title">{title}</div>
+      <div className="title mt-4">{title}</div>
       <div className="preview">
         {items
-          .filter((e) => e.id <= 4)
+          .filter((e) => e)
+          .slice(0, 4)
           ?.map((hat) => (
             <div className="collection-item">
               <div className="image" style={{ backgroundImage: `url(${hat.imageUrl})` }} />

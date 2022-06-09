@@ -12,10 +12,11 @@ const DsiplayCollections = (props) => {
 
   useEffect(() => {
     if (location.pathname === "/shop") {
+      console.log("1111111111111111111111111", shop_Data);
       setCollections(shop_Data);
     } else {
       const chooseCategory = location.pathname.replace("/", "").charAt(0).toUpperCase() + location.pathname.slice(2);
-      console.log("loc", chooseCategory);
+      console.log("22222222222222222222222", chooseCategory);
       const finalCategory = shop_Data.filter((e) => e.title === chooseCategory);
       setCollections(finalCategory);
     }
